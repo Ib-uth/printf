@@ -1,112 +1,90 @@
-# printf Project
+# 0x11. C - printf 
+
+- Writing our own `printf` function, this is a project done under [ALX Low Level Programming](https://github.com/iAmG-r00t/alx-low_level_programming).
+
+## Resource
+
+- [secrets of printf](https://www.cypress.com/file/54761/download)
+- [Implementing printf and scanf in C](https://iq.opengenus.org/how-printf-and-scanf-function-works-in-c-internally/)
+- [All About Printf](https://akshatshibu.wordpress.com/2015/07/22/all-about-printf/)
+
 
 ## Description
-This team project is part of the first year curriculum of ALX.
-_printf replicates the C standard library printf() function.
 
-What you should learn from this project:
+- The function `_printf` writes output to stdout. The function writes under the control of a `format` string that specifies how subsequent arguments (accessed via the variable-length argument facilities of standard library `stdarg`) are converted for output.
 
-* How to use git in a team setting
-* Applying variadic functions to a big project
-* The complexities of printf
-* Managing a lot of files and finding a good workflow
+- Prototype: `int _printf(const char *format, ...);`
 
----
+## Return
 
-## Prototype
-```int _printf(const char *format, ...);```
+- Upon success, `_printf` returns the number of characters printed (**excluding the terminating null byte used to end output to strings**). If an output error is encountered, the function returns `-1`.
 
-## Usage
-* Prints a string to the standard output, according to a given format
-* All files were created and compiled on Ubuntu 14.04.4 LTS using GCC 4.8.4 with the command ```gcc -Wall -Werror -Wextra -pedantic *.c```
-* Returns the number of characters in the output string on success, -1 otherwise
-* Call it this way: ```_printf("format string", arguments...)``` where ```format string``` can contain conversion specifiers and flags,
-along with regular characters
+## Format of the Argument String
 
-## Examples
+- The `format` string argument is a constant character string composed of zero or more directives: ordinary characters (apart from `%`) which are copied unchanged to the output stream; and conversion specifications, each of which results in fetching zero or more subsequent arguments.
+- Conversion specification is introduced by the character `%` and ends with a conversion specifier (which in whole make up the format specifier.)
 
-* ```_printf("Hello, main\n")``` *prints "Hello, Main", followed by a new line*
-* ```_printf("%s", "Hello")``` *prints "Hello"*
-* ```_printf("This is a number: %d", 98)``` *prints "This is a number: 98"*
+## General Requirements
 
----
+- All your files will be compiled on Ubuntu 20.04 LTS using `gcc`, using the options `-Wall -Werror -Wextra -pedantic -std=gnu89`
+- All your files should end with a new line.
+- No more than 5 functions per file.
+- You are not allowed to use global variables.
+- The prototypes of all your functions should be included in your header file called `holberton.h`
+- All your header files should be include guarded.
 
-# Tasks
+### Authorized functions and macros
 
-These are all the tasks of this project, the ones that are completed link to the corresponding files.
+- `write` (`man 2 write`)
+- `malloc` (`man 3 malloc`)
+- `free` (`man 3 free`)
+- `va_start` (`man 3 va_start`)
+- `va_end` (`man 3 va_end`)
+- `va_copy` (`man 3 va_copy`)
+- `va_arg` (`man 3 va_arg`)
 
-### [0. I'm not going anywhere. You can print that wherever you want to. I'm here and I'm a Spur for life](./functions.c)
-* Write a function that produces output according to format.
-  - c : converts input into a character
-  - s : converts input into a string
+### Github
 
-### [1. Education is when you read the fine print. Experience is what you get if you don't](handle_print.c)
-* Handle the following conversion specifiers:
-  - d : converts input into a base 10 integer
-  - i : converts input into an integer
+- There should be one project repository per group. If you clone/fork/whatever a project repository with the same name before the second deadline, you risk a 0% score.
 
-### [2. Just because it's in print doesn't mean it's the gospel]()
-* Create a man page for your function
+### Compilation
 
-### [3. With a face like mine, I do better in print]()
-* Handle the following conversion specifiers:
-  - b : the unsigned int argument is converted to binary
+- The code can be compiled like this:
+	```sh
+	gcc -Wall -Werror -Wextra -pedantic -std=gnu89 test/main.c *.c -o print
+	```
+- All test files will be in the [test](./test) directory.
 
-### [4. What one has not experienced, one will never understand in print]()
-* Handle the following conversion specifiers:
-  - u : converts the input into an unsigned integer
-  - o : converts the input into an octal number
-  - x : converts the input into a hexadecimal number
-  - X : converts the input into a hexadecimal number with capital letters
-
-### [5. Nothing in fine print is ever good news]()
-* Use a local buffer of 1024 chars in order to call write as little as possible.
-
-### [6. My weakness is wearing too much leopard print](./print_custom.c)
-* Handle the following custom conversion specifier:
-  - S : prints the string
-  - Non printable characters (0 < ASCII value < 32 or >= 127) are printed this way: \x, followed by the ASCII code value in hexadecimal (upper case - always 2 characters)
-
-### [7. How is the world ruled and led to war? Diplomats lie to journalists and believe these lies when they see them in print](./print_address.c)
-* Handle the following conversion specifier:
-  - p : int input is converted to a pointer address
-
-### [8. The big print gives and the small print takes away](./get_flag.c)
-* Handle the following flag characters for non-custom conversion specifiers:
-  - \+ : adds a \+ in front of signed positive numbers and a \- in front of signed negative numbers
-  - space : same as \+, but adds a space (is overwritten by \+)
-  - \# : adds a 0 in front of octal conversions that don't begin with one, and a 0x or 0X for x or X conversions
-
-### [9. Sarcasm is lost in print]
-* Handle the following length modifiers for non-custom conversion specifiers:
-  - l : converts d, i, u, o, x, X conversions in short signed or unsigned ints
-  - h : converts d, i, u, o, x, X conversions in long signed or unsigned ints
-
-### [10. Print some money and give it to us for the rain forests]
-* Handle the field width for non-custom conversion specifiers.
-
-### [11. The negative is the equivalent of the composer's score, and the print the performance]
-* Handle the precision for non-custom conversion specifiers.
-
-### [12. It's depressing when you're still around and your albums are out of print]
-* Handle the 0 flag character for non-custom conversion specifiers.
-
-### [13. Every time that I wanted to give up, if I saw an interesting textile, print what ever, suddenly I would see a collection]
-* Handle the - flag character for non-custom conversion specifiers.
-
-### [14. Print is the sharpest and the strongest weapon of our party](./print_custom.c)
-* Handle the following custom conversion specifier:
-  - r : prints the reversed string
-
-### [15. The flood of print has turned reading into a process of gulping rather than savoring](./print_custom.c)
-* Handle the following custom conversion specifier:
-  - R : prints the rot13'ed string
-
-### [16. * ]
-* All the above options work well together.
-
----
 
 ### Authors
-* **Setty Marcos** - [settytek@gmail.com](https://github.com/setty23)
-* **Ibraheem Sulaiman** - [uthibraheem@gmail.com](https://github.com/Ib-uth)
+
+- Setty Marcos
+- Ibraheem Sulaiman
+
+
+## Tasks
+
+0. **I'm not going anywhere. You can print that wherever you want to. I'm here and I'm a Spur for life** : A function that produces output according to a format.
+	- Prototype: int `_printf(const char *format, ...);`
+	- Returns: the number of characters printed (excluding the null byte used to end output to strings)
+	- write output to stdout, the standard output stream
+	- `format` is a character string. The format string is composed of zero or more directives. See `man 3 printf` for more detail. You need to handle the following conversion specifiers:
+		- `c`
+		- `s`
+		- `%`
+	- You don’t have to reproduce the buffer handling of the C library `printf` function.
+	- You don’t have to handle the flag characters.
+	- You don’t have to handle field width.
+	- You don’t have to handle precision.
+	- You don’t have to handle the length modifiers.
+
+1. **Education is when you read the fine print. Experience is what you get if you don't** : Handle the following conversion specifiers:
+	- `d`
+	- `i`
+	- You don’t have to handle the flag characters.
+	- You don’t have to handle field width.
+	- You don’t have to handle precision.
+	- You don’t have to handle the length modifiers.
+
+2. **Just because it's in print doesn't mean it's the gospel** : Create a man page for your function.
+	- How to read the man page: `man ./man_3_printf`
