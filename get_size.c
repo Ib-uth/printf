@@ -2,18 +2,18 @@
 
 int get_size(const char *format, int *i)
 {
-	int current_index = *i + 1;
+	int curr_i = *i + 1;
 	int size = 0;
 
-	if (format[current_index] == 'l')
+	if (format[curr_i] == 'l')
 		size = S_LONG;
-	else if (format[current_index] == 'h')
+	else if (format[curr_i] == 'h')
 		size = S_SHORT;
 
 	if (size == 0)
-		*i = current_index - 1;
+		*i = curr_i - 1;
 	else
-		*i = current_index;
+		*i = curr_i;
 
 	return (size);
 }
